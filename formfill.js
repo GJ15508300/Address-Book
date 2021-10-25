@@ -1,10 +1,10 @@
 var readlineSync = require('readline-sync')
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
-//name=nameCheck();
-//age=ageCheck();
-//email=mailIdCheck();
-//phoneno=phonenoCheck();
+name=nameCheck();
+age=ageCheck();
+email=mailIdCheck();
+phoneno=phonenoCheck();
 password=passwordCheck();
 
 function phonenoCheck()
