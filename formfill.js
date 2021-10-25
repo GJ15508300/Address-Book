@@ -1,10 +1,11 @@
 var readlineSync = require('readline-sync')
 console.log("FILL THE FORM");
-let name,age,phoneno,email;
-name=nameCheck();
-age=ageCheck();
-email=mailIdCheck();
-phoneno=phonenoCheck();
+let name,age,phoneno,email,password;
+//name=nameCheck();
+//age=ageCheck();
+//email=mailIdCheck();
+//phoneno=phonenoCheck();
+password=passwordCheck();
 
 function phonenoCheck()
 {
@@ -16,10 +17,10 @@ function phonenoCheck()
     if (test==true)
     {
         i=0;
+        return ctrl
     }
     else{
-        console.log("INVALID Phone Number");
-        console.log("AGAIN ENTER Phone Number");
+        console.log("INVALID Phone Number___________------------AGAIN ENTER Phone Number");
     }
 }
 }
@@ -35,10 +36,10 @@ function ageCheck()
     if (test==true)
     {
        i=0;
+       return ctrl
     }
     else{
-        console.log("INVALID age");
-        console.log("AGAIN ENTER AGE");
+        console.log("INVALID age___________------------AGAIN ENTER AGE");
     }
 }
 }
@@ -55,10 +56,10 @@ function nameCheck()
     if (test==true)
     {
          i=0;
+         return ctrl
     }
     else{
-        console.log("INVALID NAME");
-        console.log("AGAIN ENTER NAME");
+        console.log("INVALID NAME _____----AGAIN ENTER NAME");
     }
 }
 }
@@ -76,12 +77,41 @@ while(i==1)
     if(check==true)
     {
         i=0;
+        return mail
     }
     else
     {
-        console.log("INVALID");
-        console.log("Again Enter Mail Id");
+        console.log("INVALID_________-------Again Enter Mail Id");
         i=1;
     }
 }
+}
+
+function passwordCheck()
+{  
+let i=1;
+    while(i==1)
+    { 
+    var newPassword = readlineSync.question('enter password');
+    var minNumberofChars = 6;
+    var maxNumberofChars = 16;
+    var regularExpression = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    var check=regularExpression.test(newPassword);
+    console.log(newPassword);
+    console.log(check);
+    if(check==true)
+    {
+        console.log("VALID PASSWORD");
+        i=0;
+        return newPassword;    
+    }
+    else
+    {
+        console.log("INVALID PASSWORD______----password should contain atleast one number and one special character");
+    }
+    if(newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars)
+    {
+        console.log("not a good password");
+    }
+    }
 }
