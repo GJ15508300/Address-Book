@@ -2,8 +2,8 @@ var readlineSync = require('readline-sync')
 console.log("FILL THE FORM");
 let name,age,phoneno,email;
 name=nameCheck();
-email=mailIdCheck();
 age=ageCheck();
+email=mailIdCheck();
 phoneno=phonenoCheck();
 
 function phonenoCheck()
