@@ -1,0 +1,22 @@
+{
+  "name": "address-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GJ15508300/Address-Book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GJ15508300/Address-Book/issues"
+  },
+  "homepage": "https://github.com/GJ15508300/Address-Book#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
