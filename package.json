@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/GJ15508300/Address-Book#readme",
   "dependencies": {
+    "fs-writefile-promise": "^3.0.2",
+    "jsonfile": "^6.1.0",
     "readline-sync": "^1.4.10"
   }
 }

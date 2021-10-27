@@ -1,11 +1,48 @@
 var readlineSync = require('readline-sync')
+const write=require('fs-writefile-promise')
+const jsonfile=require('jsonfile')
+
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
 name=nameCheck();
 age=ageCheck();
 email=mailIdCheck();
 phoneno=phonenoCheck();
-password=passwordCheck();
+password=1234567;
+const obj={
+    name:name, age:age, email:email,phoneno:phoneno,password:password
+}
+readjson();
+
+async function  readjson()
+{
+    console.log(" Entery");
+    await jsonfile.readFile('studentdata.json')
+    .then((result) => { 
+        console.log(result); 
+        let array=[];      
+        array=result;
+        array.push(obj)
+        console.log(array);
+        writejson(array);
+    }).catch((err) => {
+        console.log("FAILED");
+    });
+}
+
+function writejson(array)
+{
+write('studentdata.json', JSON.stringify(array) )
+.then((result) => {
+    console.log(" SUCESS");
+
+}).catch((err) => {
+    console.log("FAILED");
+});
+}
+
+
+
 
 function phonenoCheck()
 {
@@ -31,7 +68,7 @@ function ageCheck()
     let i=1;
     while(i==1){
     var ctrl = readlineSync.question('enter Age');
-    var regex = /^[0-9]{2}$/;    
+    var regex = /^[0-9]{1,3}$/;    
     var test = regex.test(ctrl);
     if (test==true)
     {
@@ -51,7 +88,7 @@ function nameCheck()
     let i=1;
     while(i==1){
     var ctrl = readlineSync.question('enter Name');
-    var regex = /^[a-zA-Z]{2,30}$/;    
+    var regex = /^[a-zA-Z][a-zA-Z\s]{2,30}$/;    
     var test = regex.test(ctrl);    
     if (test==true)
     {
@@ -97,9 +134,7 @@ let i=1;
     var maxNumberofChars = 16;
     //var regularExpression = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     var regularExpression = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-    var check=regularExpression.test(newPassword);
-    console.log(newPassword);
-    console.log(check);
+    var check=regularExpression.test(newPassword); 
     if(check==true)
     {
         console.log("VALID PASSWORD");
