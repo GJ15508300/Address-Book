@@ -8,7 +8,7 @@ name=nameCheck();
 age=ageCheck();
 email=mailIdCheck();
 phoneno=phonenoCheck();
-password=1234567;
+password=passwordCheck();
 const obj={
     name:name, age:age, email:email,phoneno:phoneno,password:password
 }
@@ -136,8 +136,7 @@ let i=1;
     var regularExpression = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var check=regularExpression.test(newPassword); 
     if(check==true)
-    {
-        console.log("VALID PASSWORD");
+    {       
         i=0;
         return newPassword;    
     }

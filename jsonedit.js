@@ -1,7 +1,7 @@
 var readlineSync = require('readline-sync')
 const write=require('fs-writefile-promise')
 const jsonfile=require('jsonfile')
-// JSON object
+
 const data = {
     "name": "John",
     "age": 22,
@@ -12,7 +12,7 @@ const data = {
     },
     "class" : ["JavaScript", "HTML", "CSS"]
 }
-
+localStorage.setItem("text", data);
 // accessing JSON object
 // console.log(data.name); 
 // console.log(data.hobby); 
@@ -38,12 +38,12 @@ const data = {
 //console.log(JSON.parse(data.hobby[0]))
 
 
-var person = {
-    name: "Brad",
-    age: 35
-}
-jsonPerson = JSON.stringify(person); //convert to JSON
-console.log(jsonPerson.name); //undefined
+// var person = {
+//     name: "Brad",
+//     age: 35
+// }
+// jsonPerson = JSON.stringify(person); //convert to JSON
+// console.log(jsonPerson.name); //undefined
 
-jsPerson = JSON.parse(jsonPerson); //convert to JS Object
-console.log(jsPerson.name); //Brad
+// jsPerson = JSON.parse(jsonPerson); //convert to JS Object
+// console.log(jsPerson.name); //Brad

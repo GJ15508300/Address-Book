@@ -19,6 +19,7 @@
   "dependencies": {
     "fs-writefile-promise": "^3.0.2",
     "jsonfile": "^6.1.0",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "xmlhttprequest": "^1.8.0"
   }
 }
