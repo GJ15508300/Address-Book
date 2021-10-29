@@ -12,7 +12,8 @@ password=123456;
 const obj={
     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
 }
-
+console.log(obj);
+obj["name"]='order';
 // delete obj.name;
 
 readjson();
@@ -20,15 +21,16 @@ readjson();
 
 async function  readjson()
 {
-    console.log(" Entery");
+    
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
+        console.log(result);
         let array=[];      
         array=result;
-        //console.log(array);
-        array.splice(0,1);
-
-
+        // console.log(array);
+        // //array.splice(0,1);
+        // let del=readlineSync.question('which value you want delete enter it')
+        
 
         array.push(obj)
         console.log(array);
