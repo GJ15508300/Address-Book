@@ -12,9 +12,9 @@ password=123456;
  const obj={
      "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
  }
-// console.log(obj);
-// //obj["name"]='order';
-// // delete obj.name;
+console.log(obj);
+delete obj.name;
+obj.name='jaga'
 
 readjson();
 
@@ -25,17 +25,17 @@ async function  readjson()
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
         console.log(result);
-        let pos=readlineSync.question('which position you want edit!!,,.. enter it')
-        //delete result[pos];
-        let temp=result[pos];
-        console.log(temp);
-        let del=readlineSync.question('"which u want delete enter the key')
-        delete temp[del];
-        console.log(temp);
-        let key_value=readlineSync.question('which u want to edit enter key')
-        let edit_value=readlineSync.question('and then enter updated values')
-        temp[key_value]=edit_value;
-        result[pos]=temp;
+        // let pos=readlineSync.question('which position you want edit!!,,.. enter it')
+        // //delete result[pos];
+        // let temp=result[pos];
+        // console.log(temp);
+        // let del=readlineSync.question('"which u want delete enter the key')
+        // delete temp[del];
+        // console.log(temp);
+        // let key_value=readlineSync.question('which u want to edit enter key')
+        // let edit_value=readlineSync.question('and then enter updated values')
+        // temp[key_value]=edit_value;
+        // result[pos]=temp;
 
         let array=[];  
         array=result;
