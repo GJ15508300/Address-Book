@@ -6,12 +6,13 @@ console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
 name=nameCheck();
 age=ageCheck();
-email=mailIdCheck();
-phoneno=phonenoCheck();
-password=passwordCheck();
+email='aaa@gmailcom';
+phoneno=10000000000;
+password=123456;
 const obj={
     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
 }
+delete obj.name;
 readjson();
 
 
