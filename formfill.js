@@ -5,7 +5,7 @@ const jsonfile=require('jsonfile')
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
 name='gj';
-age=25;
+age=555;
 email='aaa@gmailcom';
 phoneno=10000000000;
 password=123456;
@@ -13,9 +13,15 @@ password=123456;
      "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
  }
 console.log(obj);
-delete obj.name;
-obj.name='jaga'
-
+// console.log("write");
+// let re=readlineSync.question('enter 1 or ');
+// if(re==1){
+//     let array=[];
+//         array.push(obj);
+// writejson(array)}
+// // delete obj.name;
+// // obj.name='jaga'
+// else
 readjson();
 
 
@@ -24,9 +30,19 @@ async function  readjson()
     
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
-        //console.log(result);
+        let i=0;
+        console.log("success",result.length);
+        if(result.length===undefined)
+        {
+            let array=[];
+             array.push(obj);
+             writejson(array);
+        }
+        else{
+        while(i==0){
+        console.log(result);
         let pos=readlineSync.question('which position you want edit!!,,.. enter it')
-        // //delete result[pos];
+        // delete result[pos];
         let temp=result[pos];
         console.log(temp);
         let del=readlineSync.question('"which u want delete enter the key')
@@ -35,13 +51,16 @@ async function  readjson()
         let key_value=readlineSync.question('which u want to edit enter key')
         let edit_value=readlineSync.question('and then enter updated values')
         temp[key_value]=edit_value;
+        console.log(temp);
         result[pos]=temp;
         // for(let x=0; x<result.length;x++)
         // {
         //     console.log("test");
         //     if(temp[x]==key_value)
-        //     { console.log("ULLA ........");  }
+        //     { console.log("inner if ........");  }
         // }
+            i=readlineSync.question('if u want to continue to edit enter 0 else enter 1')
+        }
         console.log(result.length);
         let array=[];
         array=result;
@@ -50,8 +69,10 @@ async function  readjson()
         array.push(obj)
         console.log(array);
         writejson(array);
+        }
     }).catch((err) => {
         console.log("FAILED",err);
+        return
     });
 }
 
