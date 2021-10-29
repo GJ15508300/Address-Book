@@ -10,16 +10,16 @@ email=mailIdCheck();
 phoneno=phonenoCheck();
 password=passwordCheck();
 const obj={
-    name:name, age:age, email:email,phoneno:phoneno,password:password
+    "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
 }
 readjson();
+
 
 async function  readjson()
 {
     console.log(" Entery");
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
-        console.log(result); 
         let array=[];      
         array=result;
         array.push(obj)
