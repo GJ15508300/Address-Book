@@ -4,17 +4,17 @@ const jsonfile=require('jsonfile')
 
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
-name=nameCheck();
-age=ageCheck();
-email='aaa@gmailcom';
-phoneno=10000000000;
-password=123456;
-const obj={
-    "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
-}
-console.log(obj);
-obj["name"]='order';
-// delete obj.name;
+// name=gj;
+// age=25;
+// email='aaa@gmailcom';
+// phoneno=10000000000;
+// password=123456;
+ const obj={
+     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
+ }
+// console.log(obj);
+// //obj["name"]='order';
+// // delete obj.name;
 
 readjson();
 
@@ -25,16 +25,19 @@ async function  readjson()
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
         console.log(result);
-        let del=readlineSync.question('which position you want delete!!,,.. enter it')
-        delete result[del];
-        console.log(result);
+        let pos=readlineSync.question('which position you want edit!!,,.. enter it')
+        //delete result[pos];
+        let temp=result[pos];
+        console.log(temp);
+        let del=readlineSync.question('"which u want delete enter the key')
+        delete temp[del];
+        console.log(temp);
+        result[pos]=temp;
+
         let array=[];  
         array=result;
         console.log(array);
         //array.splice(0,1);
-       
-        
-
         array.push(obj)
         console.log(array);
         writejson(array);
