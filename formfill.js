@@ -4,11 +4,11 @@ const jsonfile=require('jsonfile')
 
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
-// name=gj;
-// age=25;
-// email='aaa@gmailcom';
-// phoneno=10000000000;
-// password=123456;
+name='gj';
+age=25;
+email='aaa@gmailcom';
+phoneno=10000000000;
+password=123456;
  const obj={
      "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
  }
@@ -32,6 +32,9 @@ async function  readjson()
         let del=readlineSync.question('"which u want delete enter the key')
         delete temp[del];
         console.log(temp);
+        let key_value=readlineSync.question('which u want to edit enter key')
+        let edit_value=readlineSync.question('and then enter updated values')
+        temp[key_value]=edit_value;
         result[pos]=temp;
 
         let array=[];  
