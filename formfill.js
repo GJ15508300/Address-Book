@@ -26,7 +26,7 @@ async function  readjson()
         let array=[];      
         array=result;
         //console.log(array);
-        //array.splice(0);
+        array.splice(2,3,"Lemon");
 
 
 
