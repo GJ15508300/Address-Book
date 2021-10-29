@@ -12,7 +12,9 @@ password=123456;
 const obj={
     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
 }
-delete obj.name;
+
+// delete obj.name;
+
 readjson();
 
 
@@ -23,6 +25,11 @@ async function  readjson()
     .then((result) => { 
         let array=[];      
         array=result;
+        console.log(array);
+        array.splice(1);
+
+
+
         array.push(obj)
         console.log(array);
         writejson(array);
