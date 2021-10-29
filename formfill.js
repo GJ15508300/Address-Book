@@ -25,8 +25,8 @@ async function  readjson()
     .then((result) => { 
         let array=[];      
         array=result;
-        console.log(array);
-        array.splice(1,1);
+        //console.log(array);
+        //array.splice(0);
 
 
 
@@ -34,7 +34,7 @@ async function  readjson()
         console.log(array);
         writejson(array);
     }).catch((err) => {
-        console.log("FAILED");
+        console.log("FAILED",err);
     });
 }
 
