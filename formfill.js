@@ -24,20 +24,26 @@ async function  readjson()
     
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
-        console.log(result);
-        // let pos=readlineSync.question('which position you want edit!!,,.. enter it')
+        //console.log(result);
+        let pos=readlineSync.question('which position you want edit!!,,.. enter it')
         // //delete result[pos];
-        // let temp=result[pos];
-        // console.log(temp);
-        // let del=readlineSync.question('"which u want delete enter the key')
-        // delete temp[del];
-        // console.log(temp);
-        // let key_value=readlineSync.question('which u want to edit enter key')
-        // let edit_value=readlineSync.question('and then enter updated values')
-        // temp[key_value]=edit_value;
-        // result[pos]=temp;
-
-        let array=[];  
+        let temp=result[pos];
+        console.log(temp);
+        let del=readlineSync.question('"which u want delete enter the key')
+        delete temp[del];
+        console.log(temp);
+        let key_value=readlineSync.question('which u want to edit enter key')
+        let edit_value=readlineSync.question('and then enter updated values')
+        temp[key_value]=edit_value;
+        result[pos]=temp;
+        // for(let x=0; x<result.length;x++)
+        // {
+        //     console.log("test");
+        //     if(temp[x]==key_value)
+        //     { console.log("ULLA ........");  }
+        // }
+        console.log(result.length);
+        let array=[];
         array=result;
         console.log(array);
         //array.splice(0,1);
