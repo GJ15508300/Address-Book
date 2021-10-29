@@ -25,11 +25,14 @@ async function  readjson()
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
         console.log(result);
-        let array=[];      
+        let del=readlineSync.question('which position you want delete!!,,.. enter it')
+        delete result[del];
+        console.log(result);
+        let array=[];  
         array=result;
-        // console.log(array);
-        // //array.splice(0,1);
-        // let del=readlineSync.question('which value you want delete enter it')
+        console.log(array);
+        //array.splice(0,1);
+       
         
 
         array.push(obj)
