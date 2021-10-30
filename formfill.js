@@ -9,66 +9,106 @@ age=555;
 email='aaa@gmailcom';
 phoneno=10000000000;
 password=123456;
- const obj={
-     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password
+let id;
+let obj;
+let i=0;
+let del_array=[];
+
+    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates");
+    let operasion=readlineSync.question(' ');
+    if(operasion==1){
+            onlyreadjson();}
+    if(operasion==2){     
+        read_writejson();}
+   if(operasion==3)  {    
+    dele();   }
+    if(operasion==4){
+        editjson()    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function editjson()
+{
+    await jsonfile.readFile('studentdata.json')
+    .then((result) => { 
+        console.log("success",result);
+        let edit_array=result;
+        
+    }).catch((err) => {
+        console.log("FAILED",err);
+        return
+    });
+}
+
+   async function dele()
+{
+    await onlyreadjson();
+    //console.log("DDDDDDDDDDDD",del_array);
+    console.log("Enter id number which u want to delete");
+    let del_id=readlineSync.question(' ');
+    del_array.forEach(myFunction);
+
+    function myFunction(del_id,index,_) {
+
+  
+    }
+}
+
+function myobj()
+{
+ obj={
+     "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password,"id":id
  }
-console.log(obj);
-// console.log("write");
-// let re=readlineSync.question('enter 1 or ');
-// if(re==1){
-//     let array=[];
-//         array.push(obj);
-// writejson(array)}
-// // delete obj.name;
-// // obj.name='jaga'
-// else
-readjson();
+}
 
 
-async function  readjson()
+async function  onlyreadjson(){
+    await jsonfile.readFile('studentdata.json')
+    .then((result) => { 
+        console.log("success",result);
+        del_array=result;
+    }).catch((err) => {
+        console.log("FAILED",err);
+        return
+    });
+}
+
+
+async function  read_writejson()
 {
     
     await jsonfile.readFile('studentdata.json')
-    .then((result) => { 
-        let i=0;
+    .then((result) => {        
         console.log("success",result.length);
         if(result.length===undefined)
-        {
+            {
             let array=[];
-             array.push(obj);
+            id=1;
+            myobj();
+            console.log("MY OBJECT",obj);            
+            array.push(obj);             
              writejson(array);
-        }
-        else{
-        while(i==0){
-        console.log(result);
-        let pos=readlineSync.question('which position you want edit!!,,.. enter it')
-        // delete result[pos];
-        let temp=result[pos];
-        console.log(temp);
-        let del=readlineSync.question('"which u want delete enter the key')
-        delete temp[del];
-        console.log(temp);
-        let key_value=readlineSync.question('which u want to edit enter key')
-        let edit_value=readlineSync.question('and then enter updated values')
-        temp[key_value]=edit_value;
-        console.log(temp);
-        result[pos]=temp;
-        // for(let x=0; x<result.length;x++)
-        // {
-        //     console.log("test");
-        //     if(temp[x]==key_value)
-        //     { console.log("inner if ........");  }
-        // }
-            i=readlineSync.question('if u want to continue to edit enter 0 else enter 1')
-        }
-        console.log(result.length);
-        let array=[];
-        array=result;
-        console.log(array);
-        //array.splice(0,1);
-        array.push(obj)
-        console.log(array);
-        writejson(array);
+            }
+        else{           
+            console.log(result.length);
+            id=result.length+1;
+            myobj();
+            let array=[];
+            array=result;
+            // console.log("BEFORE PUSH",array);            
+            array.push(obj)
+            // console.log("AFTER PUSH",array);
+            writejson(array);
         }
     }).catch((err) => {
         console.log("FAILED",err);
@@ -90,6 +130,38 @@ write('studentdata.json', JSON.stringify(array) )
 
 
 
+
+// for(let j=0;j<del_array.length;j++)
+//     {
+//         if(del_array[j][5]===del_id){
+//             console.log("IN IN IN IN IN IN IN IN IN IN");
+//         delete del_array[j];}
+//     }
+// let i=0;
+//             while(i==0)
+//             {
+//             console.log(result);        
+//             i=readlineSync.question('if u want to continue to edit enter 0 else enter 1')
+//             }
+
+// let pos=readlineSync.question('which position you want edit!!,,.. enter it')
+        // // delete result[pos];
+        // let temp=result[pos];
+        // console.log(temp);
+        // let del=readlineSync.question('"which u want delete enter the key')
+        // delete temp[del];
+        // console.log(temp);
+        // let key_value=readlineSync.question('which u want to edit enter key')
+        // let edit_value=readlineSync.question('and then enter updated values')
+        // temp[key_value]=edit_value;
+        // console.log(temp);
+        // result[pos]=temp;
+        // for(let x=0; x<result.length;x++)
+        // {
+        //     console.log("test");
+        //     if(temp[x]==key_value)
+        //     { console.log("inner if ........");  }
+        // }
 function phonenoCheck()
 {
     let i=1;
