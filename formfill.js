@@ -1,10 +1,11 @@
 var readlineSync = require('readline-sync')
 const write=require('fs-writefile-promise')
-const jsonfile=require('jsonfile')
+const jsonfile=require('jsonfile');
+const { log } = require('console');
 
 console.log("FILL THE FORM");
 let name,age,phoneno,email,password;
-name='gj';
+name='gjjaa';
 age=555;
 email='aaa@gmailcom';
 phoneno=10000000000;
@@ -52,16 +53,30 @@ async function editjson()
 
    async function dele()
 {
-    await onlyreadjson();
-    //console.log("DDDDDDDDDDDD",del_array);
+    await onlyreadjson();    
     console.log("Enter id number which u want to delete");
     let del_id=readlineSync.question(' ');
-    del_array.forEach(myFunction);
+    //console.log(del_array);
+    let new_arr=[];
+    del_array.map((item,index)=>{
+        if(item.id!==Number(del_id))
+        {          
 
-    function myFunction(del_id,index,_) {
+            new_arr.push(item);            
+        }       
+        console.log(item.name);})
+        console.log(new_arr);
+       // writejson(new_arr);
+    // del_array.forEach(myFunction);
 
-  
-    }
+    // function myFunction(del_myid,index,delArr) {
+    //     if(del_myid==del_id)
+    //     delete del_array[index]  
+    // }
+
+    //let map = new Map();
+    // let map = new Map(Object.entries(del_array));
+    // map.delete(del_id)
 }
 
 function myobj()
