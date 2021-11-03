@@ -8,7 +8,7 @@ let name,age,phoneno,email,password;
 
 function inputdata()
 {
-    console.log("User Data");
+    console.log("U3ser Data");
 name=nameCheck();
 age=ageCheck();
 email=mailIdCheck();
@@ -28,7 +28,7 @@ async function operation_list()
 while(exit_check==1)
 {
     
-    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates 5.Search");
+    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates 5.Search 6.sort assending order");
     operasion=readlineSync.question(' ');
     if(operasion==1){
         await onlyreadjson();}
@@ -40,43 +40,123 @@ while(exit_check==1)
     if(operasion==4){
         await   editjson();    }
         if(operasion==5)
-        {
-            await searchjson();
-        }
+        {            await searchjson();        }
+        if(operasion==6)
+        {            await sortjson();        }
 
-        console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        console.log("^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-");
     exit_check=readlineSync.question('do u continue enter 1 else exit');
 }
+console.log("-------------------------------------END FILE-------------------------------------");
 }
+
+async function sortjson()
+{
+    await readjson(); 
+    let sort_array=[];
+    await point_array.map((item,index)=>
+    {
+        sort_array.push(item);
+    })
+
+    
+    console.log("------------STORED JSON FILE------------",sort_array);
+    console.log("sort an element by which key based???...1.name  3.Id ")
+    let sort_basedon=readlineSync.question(' ');
+    if(sort_basedon==1)
+    {
+        sort_array.sort(GetSortOrder("name") );
+
+        for (var item in sort_array) {    
+            console.log(sort_array[item].name);  } 
+    }
+    // else if(sort_basedon==2)
+    // {
+    //     sort_array.sort(GetSortOrder("age")  );
+    // }
+    else if(sort_basedon=3)
+    {
+        sort_array.sort(GetSortOrder("id")  );
+    }
+    
+    console.log("------------ASSENDING ORDER------------",sort_array);
+
+
+
+    console.log("If u eant to sort in DECENDING order Enter -----> '1' ");
+    let dece=readlineSync.question('');
+    if(dece==1)
+    {
+        sort_array.reverse();
+        console.log("------------IN DECENDING ORDER------------",sort_array);
+
+    }
+   
+    console.log("If u want to UPDATE sord array enter '1' else exit to NON-UPDATE sord array in JSON file");
+    let update_sort=readlineSync.question('');
+    if(update_sort==1){
+    writejson(sort_array);}
+}
+
+
+
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }   
+}
+
+
+
 var search_id;
 let search_array=[];
-async function searchjson()
-{
-    await onlyreadjson(); 
-    console.log("Enter id to search result");
-     
-    
+
+async function searchjson(){
+
+    await readjson(); 
+    console.log(" Number of ID in files");
+    for (var item in point_array) {    
+    console.log(point_array[item].id); }
+
+    console.log("Enter 'name' or 'id' or 'age'  to search result");
     search_id=readlineSync.question(' ');
     await point_array.map((item,index)=>
     {
         search_array.push(item);
     })
-
-    console.log(" search_array",search_array);
+    //console.log(" search_array",search_array);
     search_array.map((item1,index)=>{
+        
         if(item1.id===Number(search_id))
+        { 
+            console.log("My Search ID datas-^-^-^-^-^--^-^-^-^-",item1);
+        } 
+        else if(item1.name===(search_id))
+        { 
+            console.log("My Search ID datas-^-^-^-^-^--^-^-^-^-",item1);
+        } 
+        else if(item1.age===(search_id))
         { 
             console.log("My Search ID datas-^-^-^-^-^--^-^-^-^-",item1);
         } 
         
      })
     // const my_search_id = search_array.filter(element => element === search_array.id);
+ 
     // console.log("my_search_id",my_search_id);
 }
 
 async function editjson()
 {
-    await onlyreadjson();    
+    await readjson(); 
+    console.log(" Number of ID");
+    for (var item in point_array) {    
+    console.log(point_array[item].id); }  
     console.log("Enter id number which u want to edit");
     let edit_id=readlineSync.question(' ');   
     // Object.values(point_array).map((item,index)=>{
@@ -133,7 +213,10 @@ async function editjson()
 
    async function dele()
 {
-    await onlyreadjson();    
+    await readjson();   
+    console.log(" Number of ID");
+    for (var item in point_array) {    
+    console.log(point_array[item].id); } 
     console.log("Enter id number which u want to delete");
     let del_id=readlineSync.question(' ');
     //console.log(del_array);
@@ -155,6 +238,19 @@ function myobj()
      "name":name, "age":age, "email":email,"phoneno":phoneno,"password":password,"id":id
  }
 }
+
+
+async function  readjson(){
+
+    await jsonfile.readFile('studentdata.json')
+    .then((result) => {         
+        point_array=result; 
+    }).catch((err) => {
+        console.log("FAILED",err);
+        return
+    });
+}
+
 
 
 async function  onlyreadjson(){
