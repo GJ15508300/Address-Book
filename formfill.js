@@ -28,7 +28,13 @@ async function operation_list()
 while(exit_check==1)
 {
     
-    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates 5.Search 6.sort assending order");
+    console.log("which operation u want to do Enter");
+    console.log("1.read");
+    console.log("2.write");
+    console.log("3.delete");
+    console.log("4.updates");
+    console.log("5.Search");
+    console.log("6.sort assending order");
     operasion=readlineSync.question(' ');
     if(operasion==1){
         await onlyreadjson();}
@@ -256,7 +262,7 @@ async function  readjson(){
 async function  onlyreadjson(){
     await jsonfile.readFile('studentdata.json')
     .then((result) => { 
-        console.log("success",result);        
+        console.log("------------Read JSON ------------\n",result);        
         point_array=result;
         console.log("if u want to view particular data THEN Enter ID");
         let particular_data_id=readlineSync.question(' ');
@@ -283,7 +289,7 @@ async function  read_writejson()
     
     await jsonfile.readFile('studentdata.json')
     .then((result) => {        
-        console.log("success",result.length);
+        console.log(" ",result.length);
         if(result.length===undefined)
             {
             let array=[];
