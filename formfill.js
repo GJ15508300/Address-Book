@@ -28,7 +28,7 @@ async function operation_list()
 while(exit_check==1)
 {
     
-    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates");
+    console.log("which operation u wnat do Enter 1.read 2.write 3.delete 4.updates 5.Search");
     operasion=readlineSync.question(' ');
     if(operasion==1){
         await onlyreadjson();}
@@ -38,14 +38,41 @@ while(exit_check==1)
    if(operasion==3)  {    
     await       dele();   }
     if(operasion==4){
-        await   editjson()    }
+        await   editjson();    }
+        if(operasion==5)
+        {
+            await searchjson();
+        }
 
         console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
     exit_check=readlineSync.question('do u continue enter 1 else exit');
 }
 }
+var search_id;
+let search_array=[];
+async function searchjson()
+{
+    await onlyreadjson(); 
+    console.log("Enter id to search result");
+     
+    
+    search_id=readlineSync.question(' ');
+    await point_array.map((item,index)=>
+    {
+        search_array.push(item);
+    })
 
-
+    console.log(" search_array",search_array);
+    search_array.map((item1,index)=>{
+        if(item1.id===Number(search_id))
+        { 
+            console.log("My Search ID datas-^-^-^-^-^--^-^-^-^-",item1);
+        } 
+        
+     })
+    // const my_search_id = search_array.filter(element => element === search_array.id);
+    // console.log("my_search_id",my_search_id);
+}
 
 async function editjson()
 {
